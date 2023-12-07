@@ -1,0 +1,67 @@
+﻿@model List<Car>
+
+
+<div class="container">
+	<div class="text-end">
+		<a asp-controller="Car" asp-action="Add" class="btn btn-primary"> Add Car Button</a>
+	</div>
+
+</div>
+
+	<h1>Cars</h1>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th> Mileage</th>
+			<th>Date Received</th>
+			<th>DateSold </th>
+			<th>Status </th>
+			<th>VIN</th>
+			<th>Make </th>
+			<th>Model </th>
+			<th>Year </th>
+
+		</tr>
+
+	</thead>
+
+	<tbody>
+		
+			@foreach(var carObj in Model)
+			{
+			<tr>
+				<td>@carObj.Mileage</td>
+				<td>@carObj.DateReceived.ToShortDateString()</td>
+				<td>@carObj.DateSold.ToShortDateString()</td>
+				<td>@carObj.Status</td>
+				<td>@carObj.VIN</td>
+				<td>@carObj.Make</td>
+				<td>@carObj.Model</td>
+				<td>@carObj.Year</td>
+
+				<td>
+					<a asp-controller="Car" asp-action="Edit" asp-route-id ="@carObj.CarID">Edit</a>
+
+				</td>
+
+				<td>
+					<a asp-controller="Car" asp-action="Delete" asp-route-id="@carObj.CarID">Delete</a>
+
+				</td>
+
+
+			</tr>
+			}
+
+	
+			
+
+
+
+	</tbody>
+
+
+
+	
+</table>
